@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="serachSerie">
+        <span>Search Series :</span>
+        <input id="searchInput" ng-model="searchText"></input>
+    </div>
+    <div class="orderbySerie">
+        <span>Order By :</span>
+        <span class="orderby">
+            <select ng-model="selectedVal" ng-options="item for item in dropdown" ng-change="dropdownChanged(selectedVal)">
+                <option value="">--select--</option>
+            </select>
+        </span>
+    </div>
+    <div class="list-group">
+        <md-list>
+            <md-list-item class="md-2-line" ng-repeat="item in listOfSeries  | filter:searchText:onlyMatch">
+                <md-checkbox ng-model="item.done"></md-checkbox>
+                <div class="list-group-item list-group-item-action flex-column align-items-start">
+                    <img ng-src={{item.Img}}} alt="img" class="serieImg" />
+                    <a href="" ng-click="redirect(item)">
+                        <h3>{{item.Title}}</h3>
+                    </a>
+                    <h5 class="mb-1">Seasons: {{item.Seasons}}</h5>
+                    <h5 class="mb-1">Views: {{item.Views}}</h5>
+                </div>
+            </md-list-item>
+        </md-list>
+        <md-divider></md-divider>
+    </div>
+</div>
